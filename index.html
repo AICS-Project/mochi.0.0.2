@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>もちスラAI速報 - 本日の速報</title>
+  <style>
+    html, body {
+      height: 100%;
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #f7efe3 0%, #e3cfb1 100%);
+      color: #7a5b38;
+      line-height: 1.7;
+    }
+    header {
+      text-align: center;
+      padding: 2.3em 1em 1.2em 1em;
+      background: linear-gradient(120deg, #f7d6af 65%, #eac795 100%);
+      box-shadow: 0 2px 12px rgba(150,110,60,0.07);
+    }
+    header img {
+      width: 130px;
+      border-radius: 12px;
+      margin-bottom: 1.1em;
+      box-shadow: 0 4px 16px rgba(160,130,80,0.11);
+    }
+    h1 {
+      font-size: 2.2em;
+      font-weight: bold;
+      margin-bottom: 0.4em;
+      color: #814a23;
+      text-shadow: 0 1px 6px rgba(170,110,60,0.08);
+    }
+    header p {
+      font-size: 1.13em;
+      color: #a98b6b;
+      opacity: 0.97;
+      margin-bottom: 0;
+      letter-spacing: 0.03em;
+    }
+    .main-headline {
+      margin: 0;
+      margin-left: 7vw;
+      margin-top: 1.5em;
+      margin-bottom: 2.3em;
+      text-align: left;
+      color: #bb7019;
+      font-size: 2.1em;
+      font-weight: bold;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 10px rgba(170,100,20,0.07);
+    }
+    #today-news {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 40vh;
+      margin-bottom: 2em;
+    }
+    #news-center-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .news-card {
+      background: linear-gradient(120deg, #fff8f1 65%, #e8d2b4 100%);
+      border-left: 9px solid #ba8653;
+      border-radius: 18px;
+      box-shadow: 0 2px 20px rgba(180,155,100,0.11), 0 0.5px 2.5px #dec9aa;
+      padding: 2.1em 1.5em 1.3em 1.6em;
+      margin-bottom: 2.5em;
+      margin-top: 0.5em;
+      width: 100%;
+      max-width: 540px;
+      color: #6b4932;
+      transition: box-shadow 0.15s, transform 0.13s;
+      position: relative;
+      border-top-right-radius: 44px 29px;
+    }
+    .news-card h3 {
+      margin: 0 0 0.55em 0;
+      font-size: 1.32em;
+      color: #bb7019;
+      font-weight: bold;
+      letter-spacing: 0.01em;
+      text-shadow: 0 2px 14px rgba(230,170,120,0.08);
+    }
+    .news-card p {
+      margin: 0 0 0.9em 0;
+      color: #735d45;
+      font-size: 1.09em;
+    }
+    .news-card a {
+      color: #995308;
+      background: #fbe5c1;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      padding: 0.17em 0.9em;
+      font-size: 1em;
+      margin-left: 0;
+      transition: background 0.2s;
+    }
+    .news-card a:hover {
+      background: #efd1a6;
+    }
+    .news-card::after {
+      content: '';
+      position: absolute;
+      top: 16px; right: 18px;
+      width: 36px; height: 36px;
+      background: url('mochisura_ai_hero_header.png') no-repeat center/cover;
+      opacity: 0.11;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .back-link {
+      display: block;
+      text-align: right;
+      margin: 0 7vw 2em 0;
+    }
+    .back-link a {
+      color: #bb7019;
+      font-weight: bold;
+      font-size: 1.28em;
+      text-decoration: none;
+      border-bottom: 2px solid #bb7019;
+      padding-bottom: 3px;
+      transition: border 0.14s, color 0.14s;
+      letter-spacing: 0.02em;
+    }
+    .back-link a:hover {
+      border-bottom: 2px solid #fff0;
+      color: #995308;
+    }
+    /* ▼ 追加：フィードバックボタン */
+    .feedback-link-wrap {
+      text-align: center;
+      margin: 2.5em 0 0 0;
+    }
+    .feedback-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #ecb86b 60%, #cd9961 100%);
+      color: #fff;
+      font-size: 1.19em;
+      font-weight: bold;
+      border-radius: 10px;
+      padding: 0.9em 2.7em;
+      margin-bottom: 0.2em;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      box-shadow: 0 2px 9px rgba(200,160,100,0.13);
+      transition: background 0.18s, transform 0.12s;
+    }
+    .feedback-btn:hover {
+      background: linear-gradient(90deg, #cd9961 40%, #ecb86b 100%);
+      color: #fff8ec;
+      transform: translateY(-1.5px) scale(1.03);
+    }
+    /* ▼ フッター小さめ＆スッキリ */
+    footer {
+      margin-top: 2em;
+      padding: 1.1em 1em 1.6em 1em;
+      font-size: 0.97em;
+      background: #f7efe3;
+      color: #af8a5e;
+      text-align: center;
+      border-top-left-radius: 36px 12px;
+      border-top-right-radius: 36px 12px;
+      box-shadow: 0 -2px 10px rgba(220,180,100,0.07);
+    }
+    @media (max-width: 700px) {
+      .main-headline { font-size: 1.5em; margin-left: 5vw; }
+      .news-card { padding: 1.2em 0.7em 0.9em 1.0em; max-width: 99vw; }
+      .back-link { margin: 0 2vw 2em 0; }
+      .feedback-link-wrap { margin: 1.5em 0 0 0; }
+    }
+    @media (max-width: 420px) {
+      .main-headline { font-size: 1.09em; margin-left: 2vw; }
+      .news-card { border-left-width: 6px; }
+      .feedback-btn { font-size: 1em; padding: 0.8em 1.6em;}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img src="mochisura_ai_hero_header.png" alt="もちスラAI速報">
+  <h1>もちスラAI速報</h1>
+  <p>公式発信 × AI要約で、信頼できるAIニュースを毎日お届け。</p>
+</header>
+<div class="main-headline">本日のニュース速報</div>
+<section id="today-news">
+  <div id="news-center-wrap">
+    <div id="news-container"></div>
+  </div>
+</section>
+<div class="back-link">
+  <a href="history.html">→ 過去のニュースを見る</a>
+</div>
+<!-- ▼ フィードバックボタン -->
+<div class="feedback-link-wrap">
+  <a class="feedback-btn" href="feedback.html">ご意見・ご要望はこちら</a>
+</div>
+<footer>
+  <p>
+    ※このニュースサイトの要約・翻訳はAIによる自動生成です。<br>
+    表現の不自然さや一部の誤りを含む可能性があります。<br>
+    情報の正確性については、元記事をご確認ください。
+  </p>
+  <p style="margin-top: 0.7em;">© 2025 もちスラAI速報</p>
+</footer>
+<script>
+fetch("https://script.google.com/macros/s/YOUR_WEBAPP_ID/exec")
+  .then(res => res.json())
+  .then(data => {
+    const today = new Date().toISOString().split('T')[0];
+    const container = document.getElementById("news-container");
+    let found = false;
+    data.filter(item => item.date === today).forEach(item => {
+      found = true;
+      const div = document.createElement("div");
+      div.className = "news-card";
+      div.innerHTML = `
+        <h3>${item.topic}</h3>
+        <p>${item.summary}</p>
+        <a href="${item.url}" target="_blank">→ 本文を読む</a>
+      `;
+      container.appendChild(div);
+    });
+    if (!found) {
+      container.innerHTML = '<div style="text-align:center;color:#bba985;font-size:1.1em;">本日のニュースはまだありません。</div>';
+    }
+  });
+</script>
+</body>
+</html>

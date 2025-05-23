@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>もちスラAI速報 - フィードバック送信</title>
+  <style>
+    html, body {
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #f7efe3 0%, #e3cfb1 100%);
+      color: #7a5b38;
+      line-height: 1.7;
+    }
+    header {
+      text-align: center;
+      padding: 2.3em 1em 1.2em 1em;
+      background: linear-gradient(120deg, #f7d6af 65%, #eac795 100%);
+      box-shadow: 0 2px 12px rgba(150,110,60,0.07);
+    }
+    header img {
+      width: 130px;
+      border-radius: 12px;
+      margin-bottom: 1.1em;
+      box-shadow: 0 4px 16px rgba(160,130,80,0.11);
+    }
+    h1 {
+      font-size: 2.2em;
+      font-weight: bold;
+      margin-bottom: 0.4em;
+      color: #814a23;
+      text-shadow: 0 1px 6px rgba(170,110,60,0.08);
+    }
+    header p {
+      font-size: 1.13em;
+      color: #a98b6b;
+      opacity: 0.97;
+      margin-bottom: 0;
+      letter-spacing: 0.03em;
+    }
+    .main-headline {
+      margin: 0;
+      margin-left: 7vw;
+      margin-top: 1.5em;
+      margin-bottom: 2.3em;
+      text-align: left;
+      color: #bb7019;
+      font-size: 2.1em;
+      font-weight: bold;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 10px rgba(170,100,20,0.07);
+    }
+    .feedback-card {
+      background: linear-gradient(120deg, #fff8f1 65%, #e8d2b4 100%);
+      border-left: 9px solid #ba8653;
+      border-radius: 18px;
+      box-shadow: 0 2px 20px rgba(180,155,100,0.11), 0 0.5px 2.5px #dec9aa;
+      padding: 2.2em 2em 1.8em 2em;
+      margin: 0 auto 2.5em auto;
+      width: 100%;
+      max-width: 520px;
+      color: #6b4932;
+      position: relative;
+      border-top-right-radius: 44px 29px;
+    }
+    form label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.35em;
+      color: #905d28;
+      font-size: 1.09em;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.7em 0.9em;
+      border-radius: 8px;
+      border: 1px solid #e6cab6;
+      font-size: 1.08em;
+      margin-bottom: 1.3em;
+      background: #fcf7ee;
+      color: #704830;
+      box-sizing: border-box;
+      transition: border 0.2s;
+    }
+    form input:focus, form textarea:focus {
+      border: 1.5px solid #ba8653;
+      outline: none;
+      background: #fffbe8;
+    }
+    form textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+    .submit-btn {
+      background: linear-gradient(90deg, #ecb86b 60%, #cd9961 100%);
+      color: #fff;
+      border: none;
+      font-size: 1.17em;
+      font-weight: bold;
+      border-radius: 7px;
+      padding: 0.85em 2.4em;
+      cursor: pointer;
+      transition: background 0.16s, transform 0.12s;
+      box-shadow: 0 2px 9px rgba(200,160,100,0.11);
+      margin-top: 0.5em;
+      letter-spacing: 0.03em;
+    }
+    .submit-btn:hover {
+      background: linear-gradient(90deg, #cd9961 40%, #ecb86b 100%);
+      transform: translateY(-2px) scale(1.04);
+    }
+    .thanks-message {
+      color: #ba8653;
+      background: #fffbe8;
+      border-radius: 14px;
+      padding: 2em 1.2em;
+      margin: 2em auto;
+      max-width: 440px;
+      font-size: 1.16em;
+      text-align: center;
+      box-shadow: 0 2px 14px rgba(180,155,100,0.08);
+    }
+    .back-link {
+      display: block;
+      text-align: right;
+      margin: 0 7vw 2em 0;
+    }
+    .back-link a {
+      color: #bb7019;
+      font-weight: bold;
+      font-size: 1.28em;
+      text-decoration: none;
+      border-bottom: 2px solid #bb7019;
+      padding-bottom: 3px;
+      transition: border 0.14s, color 0.14s;
+      letter-spacing: 0.02em;
+    }
+    .back-link a:hover {
+      border-bottom: 2px solid #fff0;
+      color: #995308;
+    }
+    footer {
+      margin-top: 3em;
+      padding: 2em 1em 2.5em 1em;
+      font-size: 1em;
+      background: #f7efe3;
+      color: #af8a5e;
+      text-align: center;
+      border-top-left-radius: 36px 12px;
+      border-top-right-radius: 36px 12px;
+      box-shadow: 0 -2px 10px rgba(220,180,100,0.07);
+    }
+    @media (max-width: 700px) {
+      .main-headline { font-size: 1.5em; margin-left: 5vw; }
+      .feedback-card { padding: 1.1em 0.8em 1.1em 0.8em; max-width: 99vw; }
+      .back-link { margin: 0 2vw 2em 0; }
+    }
+    @media (max-width: 420px) {
+      .main-headline { font-size: 1.09em; margin-left: 2vw; }
+      .feedback-card { border-left-width: 6px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img src="mochisura_ai_hero_header.png" alt="もちスラAI速報">
+  <h1>もちスラAI速報</h1>
+  <p>公式発信 × AI要約で、信頼できるAIニュースを毎日お届け。</p>
+</header>
+<div class="main-headline">フィードバック・ご意見フォーム</div>
+<div class="feedback-card">
+  <form id="feedbackForm" action="https://script.google.com/macros/s/YOUR_GAS_WEBAPP_ID/exec" method="POST">
+    <label for="name">お名前（任意）</label>
+    <input type="text" id="name" name="name" autocomplete="name" placeholder="ニックネームOK">
+
+    <label for="sns">SNSアカウント（任意）</label>
+    <input type="text" id="sns" name="sns" autocomplete="off" placeholder="Threadsなど">
+
+    <label for="message">フィードバック内容 <span style="color:#bb7019;">*</span></label>
+    <textarea id="message" name="message" required placeholder="ご感想・ご要望・バグ報告など何でも"></textarea>
+
+    <button class="submit-btn" type="submit">送信する</button>
+  </form>
+  <div id="thanksMsg" class="thanks-message" style="display:none;">
+    フィードバックありがとうございます！<br>
+    今後の改善に活用させていただきます。
+  </div>
+</div>
+<div class="back-link">
+  <a href="index.html">← 本日の速報に戻る</a>
+</div>
+<footer>
+  <p>
+    ※このサイトのフィードバック内容は運営者が確認し、サービス改善等に活用します。<br>
+    個人情報は公開せず、利用目的以外には使用しません。
+  </p>
+  <p style="margin-top: 1em;">© 2025 もちスラAI速報</p>
+</footer>
+<script>
+document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = e.target;
+  var data = new FormData(form);
+
+  fetch(form.action, {
+    method: 'POST',
+    body: data
+  }).then(response => {
+    if(response.ok) {
+      form.style.display = "none";
+      document.getElementById('thanksMsg').style.display = "";
+    } else {
+      alert("送信に失敗しました。時間をおいて再度お試しください。");
+    }
+  }).catch(() => {
+    alert("送信に失敗しました。時間をおいて再度お試しください。");
+  });
+});
+</script>
+</body>
+</html>
